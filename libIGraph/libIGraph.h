@@ -73,8 +73,9 @@ typedef I8 int8_t;
 #include <windows.h>
 #include <io.h>
 
+#if _MSC_VER < 1700 
 #define snprintf _snprintf
-
+#endif
 #else
 
 #include <sys/types.h>
