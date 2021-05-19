@@ -1178,7 +1178,7 @@ allCallStart:
 			pCallMethod = pThisType->pVTable[vIndex];
 		}
 callMethodSet:
-		//printf("Calling method: %s\n", Sys_GetMethodDesc(pCallMethod));
+		printf("Calling method: %s\n", Sys_GetMethodDesc(pCallMethod));
 		// Set up the new method state for the called method
 		pCallMethodState = MethodState_Direct(pThread, pCallMethod, pCurrentMethodState, 0);
 		// Set up the parameter stack for the method being called

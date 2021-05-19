@@ -179,6 +179,9 @@ tMD_FieldDef* MetaData_GetFieldDefFromDefOrRef(tMetaData *pMetaData, IDX_TABLE t
 tMD_ImplMap* MetaData_GetImplMap(tMetaData *pMetaData, IDX_TABLE memberForwardedToken);
 STRING MetaData_GetModuleRefName(tMetaData *pMetaData, IDX_TABLE memberRefToken);
 
+tMD_CustomAttribute* MetaData_GetCustomAttribute(tMetaData* pMetaData);
+tMD_MethodDef* MetaData_GetMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute);
+
 // instance functions
 tMetaData* MetaData();
 void MetaData_LoadStrings(tMetaData *pThis, void *pStream, unsigned int streamLen);

@@ -120,7 +120,7 @@ static void AddCombinedJIT(tMD_MethodDef *pMethod) {
 tMethodState* MethodState_Direct(tThread *pThread, tMD_MethodDef *pMethod, tMethodState *pCaller, U32 isInternalNewObjCall) {
 	tMethodState *pThis;
 
-	if (!pMethod->isFilled) {
+		if (!pMethod->isFilled) {
 		tMD_TypeDef *pTypeDef;
 
 		pTypeDef = MetaData_GetTypeDefFromMethodDef(pMethod);

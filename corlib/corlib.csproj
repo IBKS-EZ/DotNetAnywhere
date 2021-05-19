@@ -134,8 +134,15 @@
     <Compile Include="System.IO\Stream.cs" />
     <Compile Include="System.IO\StreamReader.cs" />
     <Compile Include="System.IO\TextReader.cs" />
+    <Compile Include="System.Reflection\CallingConventions.cs" />
+    <Compile Include="System.Reflection\CustomAttributeExtensions.cs" />
     <Compile Include="System.Reflection\DefaultMemberAttribute.cs" />
+    <Compile Include="System.Reflection\ICustomAttributeProvider.cs" />
     <Compile Include="System.Reflection\MemberInfo.cs" />
+    <Compile Include="System.Reflection\MemberTypes.cs" />
+    <Compile Include="System.Reflection\MethodAttributes.cs" />
+    <Compile Include="System.Reflection\MethodImplAttributes.cs" />
+    <Compile Include="System.Reflection\MethodInfo.cs" />
     <Compile Include="System.Runtime.CompilerServices\IndexerNameAttribute.cs" />
     <Compile Include="System.Runtime.CompilerServices\MethodImplAttribute.cs" />
     <Compile Include="System.Runtime.CompilerServices\MethodImplOptions.cs" />
@@ -146,6 +153,7 @@
     <Compile Include="System.Runtime.InteropServices\ExternalException.cs" />
     <Compile Include="System.Runtime.InteropServices\InAttribute.cs" />
     <Compile Include="System.Runtime.InteropServices\OutAttribute.cs" />
+    <Compile Include="System.Runtime.InteropServices\_MethodInfo.cs" />
     <Compile Include="System.Text\Decoder.cs" />
     <Compile Include="System.Text\Encoding.cs" />
     <Compile Include="System.Text\UnicodeEncoding.cs" />

@@ -1762,7 +1762,7 @@ void JIT_Prepare(tMD_MethodDef *pMethodDef, U32 genCombinedOpcodes) {
 		for (i=0; i<numLocals; i++) {
 			tMD_TypeDef *pTypeDef;
 
-			pTypeDef = Type_GetTypeFromSig(pMethodDef->pMetaData, &sig, pMethodDef->pParentType->ppClassTypeArgs, pMethodDef->ppMethodTypeArgs);
+				pTypeDef = Type_GetTypeFromSig(pMethodDef->pMetaData, &sig, pMethodDef->pParentType->ppClassTypeArgs, pMethodDef->ppMethodTypeArgs);
 			MetaData_Fill_TypeDef(pTypeDef, NULL, NULL);
 			pLocals[i].pTypeDef = pTypeDef;
 			pLocals[i].offset = totalSize;

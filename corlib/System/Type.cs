@@ -60,6 +60,28 @@ namespace System {
 			get;
 		}
 
+		//
+		// Summary:
+		//     Searches for the public method with the specified name.
+		//
+		// Parameters:
+		//   name:
+		//     The string containing the name of the public method to get.
+		//
+		// Returns:
+		//     An object that represents the public method with the specified name, if found;
+		//     otherwise, null.
+		//
+		// Exceptions:
+		//   T:System.Reflection.AmbiguousMatchException:
+		//     More than one method is found with the specified name.
+		//
+		//   T:System.ArgumentNullException:
+		//     name is null.
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		extern public MethodInfo GetMethod(string name);
+
+
 		public override string ToString() {
 			return this.FullName;
 		}

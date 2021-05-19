@@ -1,4 +1,4 @@
-// Copyright (c) 2012 DotNetAnywhere
+﻿// Copyright (c) 2012 DotNetAnywhere
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -169,7 +169,6 @@ tMetaData* MetaData_GetResolutionScopeMetaData(tMetaData *pMetaData, IDX_TABLE r
 
 tMD_TypeDef* MetaData_GetTypeDefFromName(tMetaData *pMetaData, STRING nameSpace, STRING name, tMD_TypeDef *pInNestedClass) {
 	U32 i;
-
 	for (i=1; i<=pMetaData->tables.numRows[MD_TABLE_TYPEDEF]; i++) {
 		tMD_TypeDef *pTypeDef;
 
@@ -465,3 +464,23 @@ STRING MetaData_GetModuleRefName(tMetaData *pMetaData, IDX_TABLE memberRefToken)
 	tMD_ModuleRef *pModRef = (tMD_ModuleRef*)MetaData_GetTableRow(pMetaData, memberRefToken);
 	return pModRef->name;
 }
+
+tMD_CustomAttribute* MetaData_GetCustomAttribute(tMetaData* pMetaData) {
+	U32 i = 16;
+	// TODO: нормальный выбор атрибута, а не 16
+
+	tMD_CustomAttribute* pCustomAttribute;
+	pCustomAttribute = (tMD_CustomAttribute*)MetaData_GetTableRow(pMetaData, MAKE_TABLE_INDEX(MD_TABLE_CUSTOMATTRIBUTE, i));
+
+	return pCustomAttribute;
+}
+
+tMD_MethodDef* MetaData_GetMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute) {
+
+	tMD_MethodDef* pMethodDef;
+	pMethodDef = (tMD_MethodDef*)MetaData_GetTableRow(pMetaData, pCustomAttribute->parent);
+
+
+	return pMethodDef;
+}
+

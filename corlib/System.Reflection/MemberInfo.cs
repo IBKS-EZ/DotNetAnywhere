@@ -24,15 +24,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace System.Reflection {
-	public abstract class MemberInfo {
+namespace System.Reflection
+{
+    public abstract class MemberInfo
+    {
 
-		protected MemberInfo() {
-		}
+        protected MemberInfo()
+        {
+        }
 
-		public abstract string Name { get;}
+        public abstract string Name { get; }
 
-	}
+    }
 }
 
 #endif
