@@ -475,11 +475,26 @@ tMD_CustomAttribute* MetaData_GetCustomAttribute(tMetaData* pMetaData) {
 	return pCustomAttribute;
 }
 
-tMD_MethodDef* MetaData_GetMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute) {
+tMD_MethodDef* MetaData_GetMethodFromCustomAttribute(tMetaData* pMetaData, IDX_TABLE index) {
 
 	tMD_MethodDef* pMethodDef;
-	pMethodDef = (tMD_MethodDef*)MetaData_GetTableRow(pMetaData, pCustomAttribute->parent);
+	pMethodDef = (tMD_MethodDef*)MetaData_GetTableRow(pMetaData, index);
 
+	return pMethodDef;
+}
+
+tMD_MethodDef* MetaData_GetParentMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute) {
+
+	tMD_MethodDef* pMethodDef;
+	pMethodDef = MetaData_GetMethodFromCustomAttribute(pMetaData, pCustomAttribute->parent);
+
+	return pMethodDef;
+}
+
+tMD_MethodDef* MetaData_GetTypeMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute) {
+
+	tMD_MethodDef* pMethodDef;
+	pMethodDef = MetaData_GetMethodFromCustomAttribute(pMetaData, pCustomAttribute->type);
 
 	return pMethodDef;
 }

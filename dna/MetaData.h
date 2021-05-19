@@ -180,7 +180,9 @@ tMD_ImplMap* MetaData_GetImplMap(tMetaData *pMetaData, IDX_TABLE memberForwarded
 STRING MetaData_GetModuleRefName(tMetaData *pMetaData, IDX_TABLE memberRefToken);
 
 tMD_CustomAttribute* MetaData_GetCustomAttribute(tMetaData* pMetaData);
-tMD_MethodDef* MetaData_GetMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute);
+tMD_MethodDef* MetaData_GetMethodFromCustomAttribute(tMetaData* pMetaData, IDX_TABLE index);
+tMD_MethodDef* MetaData_GetParentMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute);
+tMD_MethodDef* MetaData_GetTypeMethodFromCustomAttribute(tMetaData* pMetaData, tMD_CustomAttribute* pCustomAttribute);
 
 // instance functions
 tMetaData* MetaData();
@@ -192,6 +194,9 @@ void MetaData_LoadTables(tMetaData *pThis, tRVA *pRVA, void *pStream, unsigned i
 
 PTR MetaData_GetBlob(BLOB_ blob, U32 *pBlobLength);
 STRING2 MetaData_GetUserString(tMetaData *pThis, IDX_USERSTRINGS index, unsigned int *pStringLength);
+
+U32 MetaData_GetValuesFromBlob(PTR blob, U32 blob_len, PTR* values, U32* values_lens);
+
 
 void* MetaData_GetTableRow(tMetaData *pThis, IDX_TABLE index);
 

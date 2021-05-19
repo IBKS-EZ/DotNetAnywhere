@@ -552,6 +552,33 @@ PTR MetaData_GetBlob(BLOB_ blob, U32 *pBlobLength) {
 	return blob;
 }
 
+
+/*  values and values_lens must be long enough for all
+		pass null to get only number of elements
+*/
+U32 MetaData_GetValuesFromBlob(PTR blob, U32 blob_len, PTR *values, U32 *values_lens) {
+
+	U32 cnt = 0;
+	for (U32 i = 2; i < blob_len; cnt++) {
+		U32 value_len = blob[i++];
+		if (value_len == 0) {
+			break;
+		}
+
+		PTR value = &blob[i];
+		
+		if (values && values_lens) {
+			values[cnt] = value;
+			values_lens[cnt] = value_len;
+		}
+
+		i += value_len;
+	}
+
+
+	return cnt;
+}
+
 // Returns length in bytes, not characters
 STRING2 MetaData_GetUserString(tMetaData *pThis, IDX_USERSTRINGS index, unsigned int *pStringLength) {
 	unsigned char *pString = pThis->userStrings.pStart + (index & 0x00ffffff);

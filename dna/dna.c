@@ -103,6 +103,17 @@ doneArgs:;
 	startTime = microTime();
 #endif
 
+	tMD_CustomAttribute* pCustomAttribute = MetaData_GetCustomAttribute(pCLIFile->pMetaData);
+	tMD_MethodDef* pMethodDef_parent = MetaData_GetParentMethodFromCustomAttribute(pCLIFile->pMetaData, pCustomAttribute);
+	tMD_MethodDef* pMethodDef_ctor = MetaData_GetTypeMethodFromCustomAttribute(pCLIFile->pMetaData, pCustomAttribute);
+	tMD_TypeDef* pTypeDef = MetaData_GetTypeDefFromMethodDef(pMethodDef_ctor);
+	U32 blob_len = 0;
+	PTR blob = MetaData_GetBlob(pCustomAttribute->value, &blob_len);
+	U32 values_lens[3];
+	PTR values[3];
+
+	U32 value_cnt = MetaData_GetValuesFromBlob(blob, blob_len, values, values_lens);
+
 	retValue = CLIFile_Execute(pCLIFile, argc - i, argp + i);
 
 #ifdef DIAG_TOTAL_TIME
