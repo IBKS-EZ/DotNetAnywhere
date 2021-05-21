@@ -1,4 +1,4 @@
-// Copyright (c) 2012 DotNetAnywhere
+﻿// Copyright (c) 2012 DotNetAnywhere
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,8 @@
 #include "Finalizer.h"
 #include "System.Net.Sockets.Socket.h"
 #include "MethodState.h"
+
+#include "LTL.h"
 
 static void ShowUsage() {
 	printf("Usage:\n");
@@ -103,16 +105,19 @@ doneArgs:;
 	startTime = microTime();
 #endif
 
-	tMD_CustomAttribute* pCustomAttribute = MetaData_GetCustomAttribute(pCLIFile->pMetaData);
-	tMD_MethodDef* pMethodDef_parent = MetaData_GetParentMethodFromCustomAttribute(pCLIFile->pMetaData, pCustomAttribute);
-	tMD_MethodDef* pMethodDef_ctor = MetaData_GetTypeMethodFromCustomAttribute(pCLIFile->pMetaData, pCustomAttribute);
-	tMD_TypeDef* pTypeDef = MetaData_GetTypeDefFromMethodDef(pMethodDef_ctor);
-	U32 blob_len = 0;
-	PTR blob = MetaData_GetBlob(pCustomAttribute->value, &blob_len);
-	U32 values_lens[3];
-	PTR values[3];
+	//tMD_CustomAttribute* pCustomAttribute = MetaData_GetCustomAttribute(pCLIFile->pMetaData);
+	//tMD_MethodDef* pMethodDef_parent = MetaData_GetParentMethodFromCustomAttribute(pCLIFile->pMetaData, pCustomAttribute);
+	//tMD_MethodDef* pMethodDef_ctor = MetaData_GetTypeMethodFromCustomAttribute(pCLIFile->pMetaData, pCustomAttribute);
+	//tMD_TypeDef* pTypeDef = MetaData_GetTypeDefFromMethodDef(pMethodDef_ctor);
+	//// логика такя: если pTypeDef нужный нам атрибут, то его добавляем в таблицу
+	//// пробегаемся соответсвенно по всем атрибутам MAKE_TABLE_INDEX(MD_TABLE_CUSTOMATTRIBUTE, i)
+	//U32 blob_len = 0;
+	//PTR blob = MetaData_GetBlob(pCustomAttribute->value, &blob_len);
+	//U32 values_lens[3];
+	//PTR values[3];
 
-	U32 value_cnt = MetaData_GetValuesFromBlob(blob, blob_len, values, values_lens);
+	//U32 value_cnt = MetaData_GetValuesFromBlob(blob, blob_len, values, values_lens);
+	LTL_init(pCLIFile->pMetaData);
 
 	retValue = CLIFile_Execute(pCLIFile, argc - i, argp + i);
 

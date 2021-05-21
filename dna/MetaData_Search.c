@@ -465,12 +465,10 @@ STRING MetaData_GetModuleRefName(tMetaData *pMetaData, IDX_TABLE memberRefToken)
 	return pModRef->name;
 }
 
-tMD_CustomAttribute* MetaData_GetCustomAttribute(tMetaData* pMetaData) {
-	U32 i = 16;
-	// TODO: нормальный выбор атрибута, а не 16
+tMD_CustomAttribute* MetaData_GetCustomAttribute(tMetaData* pMetaData, IDX_TABLE member) {
 
 	tMD_CustomAttribute* pCustomAttribute;
-	pCustomAttribute = (tMD_CustomAttribute*)MetaData_GetTableRow(pMetaData, MAKE_TABLE_INDEX(MD_TABLE_CUSTOMATTRIBUTE, i));
+	pCustomAttribute = (tMD_CustomAttribute*)MetaData_GetTableRow(pMetaData, member);
 
 	return pCustomAttribute;
 }
