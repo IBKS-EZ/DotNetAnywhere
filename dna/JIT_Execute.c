@@ -36,6 +36,8 @@
 #include "System.String.h"
 #include "System.Array.h"
 
+#include "LTL.h"
+
 // Global array which stores the absolute addresses of the start and end of all JIT code
 // fragment machine code.
 tJITCodeInfo jitCodeInfo[JIT_OPCODE_MAXNUM];
@@ -1179,6 +1181,7 @@ allCallStart:
 		}
 callMethodSet:
 		printf("Calling method: %s\n", Sys_GetMethodDesc(pCallMethod));
+		RunOnMethodLTL(pCallMethod);
 		// Set up the new method state for the called method
 		pCallMethodState = MethodState_Direct(pThread, pCallMethod, pCurrentMethodState, 0);
 		// Set up the parameter stack for the method being called

@@ -10,7 +10,7 @@ typedef struct Vector##type##_ {\
   U32       dwSize;\
 } Vector##type;\
 void Reallocate##type##Vector(Vector##type *vector);\
-void Allocate##type##Vector(Vector##type *vector);\
+void Allocate##type##Vector(Vector##type *vector, U32 size);\
 Vector##type Vector##type##_init(U32  size);\
 void Push##type##Vector(Vector##type * vector, type element);
 
@@ -56,8 +56,8 @@ typedef struct ConfigureLTL_{
 //}StackLTL;
 
 typedef struct FutureLTL_ {
-  VectorStateLTL  ltlState;
-  U32             dwStateLimit;
+  StateLTL  ltlState;
+  U32       dwStateLimit;
 }FutureLTL;
 
 //typedef struct FutureStackLTL_ {
@@ -82,6 +82,7 @@ typedef struct LTL_ {
 } LTL;
 
 void LTL_init(tMetaData* pMetaData);
+void RunOnMethodLTL(tMD_MethodDef* pMethod);
 //void PushVector(VectorConfigureLTL* vector, ConfigureLTL element);
 
 #endif // __LTL_H
